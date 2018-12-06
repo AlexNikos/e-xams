@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 //import { Button, Card, Elevation, FormGroup, InputGroup } from "@blueprintjs/core";
-import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+//import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import classes from './Login.css';
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, Input } from 'mdbreact';
+//import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, Input } from 'mdbreact';
 
 export default class Login extends Component {
   constructor(props) {
@@ -14,35 +14,39 @@ export default class Login extends Component {
     };
   }
 
-  validateForm() {
-    return this.state.email.length > 0 && this.state.password.length > 0;
-  }
 
   handleChange = event => {
     this.setState({
-      [event.target.id]: event.target.value
+      email: event.target.value
     });
+    console.log(this.state.email);
   }
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
+    console.log(this.state.email);
   }
 
   render() {
     return (
       <div className={classes.Back}>
-      <div className={classes.Login}>
-        <h2>Sign in</h2>
-        <form>
-          <input type="text" placeholder="Email" /><br />
-          <input type="password" placeholder="Password" /><br />
-          <div>
-            <label >Remember me</label>
-            <input type="checkbox" onChange={this.handleCheck} defaultChecked={true} />
-            <button>Login</button></div>
-
-        </form>
-      </div>
+        <div className={classes.Login}>
+          <h2>Sign in</h2>
+          <form>
+            <input type="text" 
+            placeholder="Email" 
+            onChange={(event)=>this.handleChange(event)}/><br />
+            <input type="password" placeholder="Password" /><br />
+          </form>
+          <div style={ {display: 'inline-block', width: '70%'}}>
+            <div style={ {display: 'inline-block', width: '40%', float: 'left'}}>
+              <label >Remember me</label>
+              <input style={ {height: '100%'}} type="checkbox" onChange={this.handleCheck} defaultChecked={true} />
+            </div>
+            <button onClick={(event)=>this.handleSubmit(event)}>Login</button>
+          </div>
+          <p>Need an account? Create one here</p>
+        </div>
       </div>
     );
   }
