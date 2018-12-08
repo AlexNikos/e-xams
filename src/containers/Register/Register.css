@@ -1,0 +1,54 @@
+.Back{
+  height: 100vh; /* Magic here */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Register {
+  height: 500px;
+  width: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 3px #ccc;
+  border: 1px solid #eee;
+  box-sizing: border-box;
+}
+
+.Register form {
+  width: 80%;
+  align-content: center;
+}
+
+.Register form div {
+  width: 100%;
+}
+
+.Register form button {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.Register form label {
+  width: 30%;
+  
+}
+
+.Register form input {
+  float: right;
+}
+
+.Radio {
+    display: inline-flex;
+    margin-bottom: 30px;
+}
+
+.Radio label {
+  margin-left: 20px;
+  
+}
+
+.Radio input {
+  margin-right: 60px;
+}

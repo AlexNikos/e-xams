@@ -10,14 +10,15 @@
 }
 
 .Login {
+  width: 70%;
   margin: 20px auto;
-  width: 80%;
   text-align: center;
   box-shadow: 0 2px 3px #ccc;
   border: 1px solid #eee;
   padding: 10px;
   box-sizing: border-box;
   background-color: rgba(0, 0, 255, 0.3);
+  align-items: center;
 }
 
 .Login h2 {
@@ -51,4 +52,5 @@
   .Login {
       width: 500px;
   }
+  
 }
