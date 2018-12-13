@@ -1,0 +1,11 @@
+.Mainbox {
+  height: 80vh;
+  width: 80%;
+  float: right;
+  border: 1px solid #eee;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background-color: rgba(116, 116, 185, 0.3);
+  align-items: center;
+}

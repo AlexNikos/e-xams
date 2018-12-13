@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route, Link } from 'react-router-dom';
 //import { Button, Card, Elevation, FormGroup, InputGroup } from "@blueprintjs/core";
 //import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import classes from './Login.css';
@@ -56,7 +57,7 @@ export default class Login extends Component {
           </div>
           <button
             style={{ display: 'inline-block', width: '50%', float: 'none', marginTop: '20px', marginBottom:'20px' }}>Anonymous Login</button><br />
-          <p style={{ display: 'inline'}}>Need an account? Create one <a href='/register'>here</a></p>
+          <p style={{ display: 'inline'}}>Need an account? Create one <Link to='/register'>here</Link></p>
         </div>
       </div>
     );

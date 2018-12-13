@@ -5,8 +5,16 @@ import classes from './Register.css';
 class Register extends Component {
 
   state = {
-
+    name:'',
+    surname:'',
+    email:'',
+    password:'',
+    type:'Teacher'
   };
+
+  handleTypeChange = (event) => {
+    this.setState({type: event.target.value});
+  }
 
   render() {
 
@@ -19,13 +27,17 @@ class Register extends Component {
                 <label>
                   Teacher
           </label>
-                <input type="radio" value="Teacher" checked={true} />
+                <input type="radio" value="Teacher" 
+                checked={this.state.type === 'Teacher'} 
+                onChange={(event)=>this.handleTypeChange(event)}/>
               </div>
               <div>
                 <label>
                   Student
           </label>
-                <input type="radio" value="Student" />
+                <input type="radio" value="Student" 
+                checked={this.state.type === 'Student'} 
+                onChange={(event)=>this.handleTypeChange(event)}/>
               </div>
             </div><br />
             <div><label>Name: </label><input type="text"  /></div><br />

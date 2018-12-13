@@ -7,7 +7,7 @@
 
 .Register {
   height: 500px;
-  width: 450px;
+  width: 600px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,7 +17,7 @@
 }
 
 .Register form {
-  width: 80%;
+  width: 60%;
   align-content: center;
 }
 
@@ -51,4 +51,8 @@
 
 .Radio input {
   margin-right: 60px;
+}
+
+label {
+  font-weight: bolder;
 }

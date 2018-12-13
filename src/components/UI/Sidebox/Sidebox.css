@@ -1,0 +1,30 @@
+.Sidebox {
+
+  height: 70vh;
+  width: 20%;
+  position: fixed;
+  float: left;
+  border: 1px solid #eee;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 255, 0.3);
+  align-items: center;
+  
+}
+
+.Container {
+  height: 95%;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch enabled;
+}
+
+.Container:hover {
+  overflow-y: scroll;
+}
+
+.Button {
+  width: 90%;
+  position: absolute;
+  bottom: 0;
+}

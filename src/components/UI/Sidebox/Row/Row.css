@@ -1,0 +1,32 @@
+.Row {
+
+  width: 100%;
+  margin: 2px;
+  border: 1px solid #eee;
+  box-sizing: border-box;
+  background-color: rgba(136, 136, 150, 0.3);
+  align-items: center;
+  display: inline-block;
+
+}
+
+.Row p {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.Selected {
+   width: 100%;
+   background-color: rgba(192, 67, 36, 0.3);
+  -webkit-clip-path: polygon(0% 0%, 80% 0, 100% 50%, 80% 100%, 0% 100%);
+   clip-path: polygon(0% 0%, 80% 0, 100% 50%, 80% 100%, 0% 100%);
+}
+
+/* .Row div {
+  width: 0;
+	height: 0;
+	border-top: 25px solid transparent;
+	border-right: 50px solid #555;
+	border-bottom: 25px solid transparent;
+} */
