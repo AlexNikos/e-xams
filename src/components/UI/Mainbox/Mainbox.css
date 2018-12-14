@@ -1,11 +1,42 @@
 .Mainbox {
   height: 80vh;
-  width: 80%;
-  float: right;
+  width: 75%;
+  position: fixed;
+  right: 20px;
   border: 1px solid #eee;
   padding: 20px;
   box-sizing: border-box;
   border-radius: 8px;
   background-color: rgba(116, 116, 185, 0.3);
   align-items: center;
+  overflow: hidden;
+}
+
+.Grid {
+  height: 500px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch enabled;
+
+}
+
+.Grid:hover {
+  overflow-y: scroll;
+}
+
+.Mainbox button {
+  height: 45px;
+  width: 45px;
+  float: right;
+  background-image: url(../../../assets/images/add.png);
+  background-color: Transparent;
+  border: none;
+  /* cursor:pointer; */
+  overflow: hidden;
+  outline:none;
+}
+
+.Mainbox ul {
+  margin-left: 94%;
 }

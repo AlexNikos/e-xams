@@ -12,7 +12,7 @@ const sidebox = (props) => {
   return (
     <div className={classes.Sidebox}>
       <div className={classes.Container}>{lessons}</div>
-      <button className={classes.Button}>Add Lesson</button>
+      <button className={classes.Button} onClick={props.addCourse}>Add Lesson</button>
     </div>
   );
 

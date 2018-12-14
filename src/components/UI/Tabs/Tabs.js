@@ -31,7 +31,7 @@ class Tabs extends Component {
     } = this;
 
     return (
-       <div /*className={classes.tabs}*/>
+       <div style={{height: '95%'}}/*className={classes.tabs}*/>
         <ol className={classes.TabList}>
           {children.map((child) => {
             const { label } = child.props;
