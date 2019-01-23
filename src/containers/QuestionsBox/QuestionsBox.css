@@ -1,0 +1,12 @@
+.Grid {
+  height: 500px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch enabled;
+
+}
+
+.Grid:hover {
+  overflow-y: scroll;
+}

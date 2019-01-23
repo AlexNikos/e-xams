@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 //import { Button, Card, Elevation, FormGroup, InputGroup } from "@blueprintjs/core";
 //import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import classes from './Login.css';
+import { signIn } from '../../store/actions/authActions'
 //import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, Input } from 'mdbreact';
 
-export default class Login extends Component {
+class Login extends Component {
 
   state = {
     email: "",
@@ -15,17 +17,25 @@ export default class Login extends Component {
   };
 
 
-  handleChange = event => {
+  handleEmailChange = event => {
 
     this.setState({
       email: event.target.value
-    }, () => { console.log(this.state.email); });
+    });
+
+  }
+
+  handlePassChange = event => {
+
+    this.setState({
+      password: event.target.value
+    });
 
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state.email);
+    this.props.signin(this.state.email, this.state.password);
   }
 
   handleCheck = () => {
@@ -42,8 +52,10 @@ export default class Login extends Component {
           <form>
             <input type="text"
               placeholder="Email"
-              onChange={(event) => this.handleChange(event)} />
-            <input type="password" placeholder="Password" />
+              onChange={(event) => this.handleEmailChange(event)} />
+            <input type="password" 
+            placeholder="Password" 
+            onChange={(event) => this.handlePassChange(event)}/>
           </form>
           <div style={{ display: 'inline-block', width: '70%', marginBottom: '10px' }}>
             <div style={{ display: 'inline-block', float: 'left' }}>
@@ -63,3 +75,17 @@ export default class Login extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    isAuth: state.auth.isAuth
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return{
+    signin: (email, password) => dispatch( signIn(email, password) )
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

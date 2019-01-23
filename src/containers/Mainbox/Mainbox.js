@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import Tabs from '../../components/UI/Tabs/Tabs';
 import classes from './Mainbox.css';
-import MultipleChoice from '../../components/UI/Questions/MultipleChoice/MultipleChoice';
-import { FloatingMenu, MainButton, ChildButton } from 'react-floating-button-menu';
+// import MultipleChoice from '../../components/UI/Questions/MultipleChoice/MultipleChoice';
+// import { FloatingMenu, MainButton, ChildButton } from 'react-floating-button-menu';
 import CreateMultipleChoice from '../../components/UI/CreateQuestion/CreateMultipleChoice/CreateMultipleChoice';
 import CreateTrueFalse from '../../components/UI/CreateQuestion/CreateTrueFalse/CreateTrueFalse';
 import Aux from '../../hoc/Auxiliary';
 
-import MdAdd from '@material-ui/icons/Add';
-import MdClose from '@material-ui/icons/Clear';
-import MIcon from '@material-ui/icons/Reorder';
-import TIcon from '@material-ui/icons/DragHandle';
-import SIcon from '@material-ui/icons/Remove';
+import QuestionsBox from '../QuestionsBox/QuestionsBox';
+
+// import MdAdd from '@material-ui/icons/Add';
+// import MdClose from '@material-ui/icons/Clear';
+// import MIcon from '@material-ui/icons/Reorder';
+// import TIcon from '@material-ui/icons/DragHandle';
+// import SIcon from '@material-ui/icons/Remove';
 
 
 class Mainbox extends Component {
@@ -95,7 +97,7 @@ class Mainbox extends Component {
         }
       }
     );
-    }
+  }
 
 
   newMultipleHandler = () => {
@@ -124,13 +126,18 @@ class Mainbox extends Component {
 
           <Tabs>
             <div label="Questions" >
-              <div className={classes.Grid}>
+              <QuestionsBox 
+              fabisOpen={this.state.fabisOpen}
+              fabHandler={this.fabHandler}
+              newTrueFalseHandler={this.newTrueFalseHandler}
+              newMultipleHandler={this.newMultipleHandler} />
+              {/* <div className={classes.Grid}>
                 {this.props.questions.map((question) => {
                   return (
                     <MultipleChoice key={question.id} question={question} />
                   )
-                })}
-              </div>
+                })} */}
+
             </div>
             <div label="Assignments">
               Assignments Tab
@@ -143,7 +150,9 @@ class Mainbox extends Component {
         </div>
           </Tabs>
 
-          <div style={{ display: 'ruby-text-container' }}>
+{true}
+
+          {/* <div style={{ display: 'ruby-text-container' }}>
             <FloatingMenu
               slideSpeed={500}
               direction="up"
@@ -175,8 +184,8 @@ class Mainbox extends Component {
                 size={40}
                 onClick={this.newMultipleHandler}
               />
-            </FloatingMenu>
-          </div>
+            </FloatingMenu> 
+          </div> */}
         </div>
         {this.state.newMultiple ?
           < CreateMultipleChoice
