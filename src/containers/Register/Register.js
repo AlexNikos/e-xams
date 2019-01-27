@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classes from './Register.css';
+import { registerUser } from '../../store/actions/authActions';
 import * as actions from '../../store/actions/registerActions'
 
 
@@ -11,8 +12,9 @@ class Register extends Component {
     surname: '',
     email: '',
     password: '',
-    type: 'Teacher'
+    type: ''
   };
+
 
   handleTypeChange = (event) => {
     this.setState({ type: event.target.value });
@@ -36,15 +38,16 @@ class Register extends Component {
   }
 
   handleInfo = (e) => {
+
     e.preventDefault();
+    let { name, surname, fullname, email, password, type} = this.state;
     console.log(this.state);
-    this.props.registerInfo(this.state.name, this.state.surname, this.state.email, this.state.password);
+
+    this.props.register(name, surname, email, password, type)
+    .then((msg) => console.log(msg)); /*this.props.history.replace('/teacher')*/
+    
   }
 
-  // handleTest = (e) => {
-  //   e.preventDefault();
-  //   this.props.setTest();
-  // }
 
   render() {
 
@@ -82,22 +85,22 @@ class Register extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    name: state.register.name,
-    surname: state.register.surname,
-    email: state.register.email,
-    password: state.register.password,
-    type: state.register.type
-  }
-}
+// const mapStateToProps = (state) => {
+//   return {
+//     name: state.register.name,
+//     surname: state.register.surname,
+//     email: state.register.email,
+//     password: state.register.password,
+//     type: state.register.type
+//   }
+// }
 
 const mapDispatchToProps = (dispatch) => {
   return{
-    //setType: (userType) => dispatch (actions.setType(userType) ),//dispatch({type:'SET_TYPE', userType: userType}),
-    registerInfo: (name, surname, email, password) => dispatch( actions.setInfo(name, surname, email, password) ),//dispatch({type:'SET_INFO', name: name, surname:surname, email: email, password: password})
-    //setTest: () => dispatch( actions.setTest())
+    
+    register: (name, surname, email, password, type) => dispatch( registerUser(name, surname, email, password, type) )
+
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default connect(null, mapDispatchToProps)(Register);

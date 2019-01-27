@@ -5,6 +5,9 @@ import Sidebox from '../../components/UI/Sidebox/Sidebox';
 import Footer from '../../components/UI/Footer/Footer';
 import Mainbox from '../../containers/Mainbox/Mainbox';
 import CreateCourse from '../../components/UI/CreateCourse/CreateCourse';
+import { connect } from 'react-redux';
+import { withRouter, Redirect } from 'react-router-dom';
+import { signOut } from '../../store/actions/authActions';
 
 class Layout extends Component {
 
@@ -123,6 +126,30 @@ class Layout extends Component {
       }]
   }
 
+  componentDidUpdate(){
+    console.log('[Layout DidMount]' +this.props.isAuth);
+  }
+
+
+  componentWillUpdate(){
+    console.log('[Layout WillUpdate]' +this.props.isAuth);
+  }
+
+  componentDidUpdate(){
+    console.log('[Layout DidUpdate]' +this.props.isAuth);
+  }
+
+  componentWillMount(){
+    console.log('[Layout WillMount]' +this.props.isAuth);
+    if(!this.props.isAuth){
+      this.props.history.replace('/login');
+    }
+  }
+
+  componentDidUpdate(){
+    console.log('[Layout DidUpdate] ' +this.props.isAuth);
+  }
+
   selectLessonHandler = (lesson) => {
     this.setState({ lessonSelected: lesson });
   }
@@ -133,12 +160,22 @@ class Layout extends Component {
     });
   }
 
+  signoutHandler = (e) => {
+    e.preventDefault();
+    this.props.signout()
+    .then(() => this.props.history.replace('/'))
+    .catch(() => this.props.history.replace('/'));
+  }
+
 
   render() {
 
+    console.log( '[LayOut render()] ' + this.props.isAuth)
+    
+
     return (
       <Aux>
-        <Toolbar />
+        <Toolbar signout={this.signoutHandler}/>
         <div style={{ marginTop: '72px', height: '90vh' }}>
 
           <Sidebox lessons={this.state.lessons} handler={this.selectLessonHandler} selected={this.state.lessonSelected} addCourse={this.addCourseHandler} />
@@ -151,8 +188,24 @@ class Layout extends Component {
         <Footer />
       </Aux>
     );
+    
 
   }
-}
+  }
 
-export default Layout;
+
+
+  const mapStateToProps = (state) => {
+    return{
+      isAuth: state.auth.isAuth,
+      path: state.auth.path
+    }
+  }
+  
+  const mapDispathToProps = (dispatch) =>{
+    return{
+      signout: () => dispatch(signOut())
+    }
+  }
+
+export default connect(mapStateToProps, mapDispathToProps)(withRouter(Layout));

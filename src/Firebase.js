@@ -13,8 +13,5 @@ const config = {
 
 firebase.initializeApp(config);
 
-export const databaseRef = firebase.database().ref();
-//export const testRef = databaseRef.child("type");
+export const databaseRef = firebase.database();
 export const authRef = firebase.auth();
-
-//export default firebase// database = firebase.database().ref('posts/')

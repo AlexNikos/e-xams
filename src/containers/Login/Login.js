@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 //import { Button, Card, Elevation, FormGroup, InputGroup } from "@blueprintjs/core";
 //import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import classes from './Login.css';
-import { signIn } from '../../store/actions/authActions'
+import { signIn, fetchUser } from '../../store/actions/authActions'
+import { databaseRef } from '../../Firebase';
 //import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, Input } from 'mdbreact';
 
 class Login extends Component {
@@ -15,7 +16,6 @@ class Login extends Component {
     auth: false,
     rememberMe: true
   };
-
 
   handleEmailChange = event => {
 
@@ -35,7 +35,8 @@ class Login extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.signin(this.state.email, this.state.password);
+    this.props.signin(this.state.email, this.state.password)
+    .then(() => this.props.history.replace('/teacher' ));
   }
 
   handleCheck = () => {
@@ -78,7 +79,8 @@ class Login extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth,
+    path: state.auth.path
   }
 }
 
